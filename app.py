@@ -1,11 +1,17 @@
 from flask import Flask, jsonify
 import psutil
 import requests
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
 
-# Webhook URL para enviar el mensaje
-WEBHOOK_URL = 'https://chat.googleapis.com/v1/spaces/AAAAdPh1W6I/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=3oDT7G2iqeQMFSb1tj23bNrIjKslOsJuZ0kg5EZVcbM'
+
+
+load_dotenv()
+
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
 
 # Umbral de uso de RAM y almacenamiento (90%)
 RAM_THRESHOLD_PERCENT = 90
